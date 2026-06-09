@@ -1,0 +1,47 @@
+import csv
+filename="c:\sqlite\sub1"
+def insert():
+    fields = ['stuid','stuname','sub1','sub2','sub3','total']
+    with open(filename, 'w') as csvfile:
+        csvwriter = csv.writer(csvfile):
+        csvwriter.writerow(fields)
+        n=int(input("how mnay data"))
+        for x in range(1,n+1):
+            stuid=input("enter stuid")
+            studname=input("enter name")
+            sub1=input("enter sub1")
+            sub2=input("enter sub2")
+            sub3=input("enter sub3")
+            total=int(sub1)+int(sub2)+int(sub3)
+            rows+[stuid,studname,sub1,sub2,sub3,total]
+            csvwriter.writerow(rows)
+
+
+        def display():
+            fields = []
+            roes = []
+            lcnt=1
+            with open(filename, 'r')as csvfile:
+                csvreader = csv.reader(csvfile)
+                fields = next(csvreader)
+                print(fields[0],"\t" , fields[1],"\t" , fields[2],"\t" , fields[3],"\t" , fields[4],"\t" , fields[5]) 
+
+                for row in csvreader:
+                    if len(row)>0:
+                        print(row[0],"\t" , row[1],"\t" , row[2],"\t" , row[3],"\t" , row[4],"\t" ,row[5])
+                        lcnt+=1
+
+                     print("total no. of rows: ",lcnt)
+
+
+                     ch=0
+                     while ch!=5 :
+                         print("1. insert ")
+                         print("2. display")
+                         print("3. exit")
+
+                         ch=int(input("enter your choice :: "))
+                         if ch==1:
+                             insert()
+                             elif ch==2:
+                                 display()
